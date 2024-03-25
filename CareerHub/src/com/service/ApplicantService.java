@@ -1,8 +1,11 @@
 package com.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import com.dao.ApplicantDaoImpl;
+import com.exception.DataBaseConnectionException;
+import com.model.ApplicantModel;
 
 public class ApplicantService {
 	ApplicantDaoImpl 	applicantDaoImpl=new 	ApplicantDaoImpl();
@@ -10,4 +13,7 @@ public class ApplicantService {
 	{
 		applicantDaoImpl.signUp(applicantId,firstName, lastName, email, phonenumber, resume);
 	}
+	public List<ApplicantModel> getApplicant() throws SQLException, DataBaseConnectionException {
+return applicantDaoImpl.getApplicant();
+}
 }

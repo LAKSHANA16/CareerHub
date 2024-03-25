@@ -1,18 +1,21 @@
 package com.controller;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 
+import com.exception.DataBaseConnectionException;
+import com.model.ApplicantModel;
 import com.service.ApplicantService;
 
 public class ApplicantController {
-	public static void main(String[] args) throws SQLException {
+	public static void main(String[] args) throws SQLException, DataBaseConnectionException {
 		Scanner sc = new Scanner(System.in);
 		ApplicantService applicantService = new ApplicantService();
 		while (true) {
 			System.out.println("***********APPLICANT OPS*************");
 			System.out.println("ENTER 1 TO SIGN UP");
-			System.out.println("ENTER 2 TO APPLY FOR A JOB");
+			System.out.println("Enter 2 to fetch");
 			System.out.println("ENTER 0 TO EXIT");
 			int input = sc.nextInt();
 			if (input == 0) {
@@ -37,7 +40,19 @@ public class ApplicantController {
 				String resume = sc.nextLine();
 				applicantService.signUp(applicantId,firstName, lastName, email, phonenumber, resume);
 				break;
-			default:
+case 2:
+				
+				System.out.println("all applicants details");
+				try {
+					List<ApplicantModel> list=applicantService.getApplicant();
+					for(ApplicantModel a:list) {
+						System.out.println(a);
+					}
+				}catch(SQLException e) {
+					System.out.println(e.getMessage());
+				}
+				break;
+default:
 				System.out.println("INVALID INPUT");
 				break;
 			}

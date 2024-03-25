@@ -27,6 +27,19 @@ public class CompanyDto {
 		this.companyName = companyName;
 		this.location = location;
 	}
+	
+	public CompanyDto(String jobTitle, String jobDescription, String jobLocation, double salary, LocalDate postedDate,
+			int companyCompanyId, String companyName, String location) {
+		super();
+		this.jobTitle = jobTitle;
+		this.jobDescription = jobDescription;
+		this.jobLocation = jobLocation;
+		this.salary = salary;
+		this.postedDate = postedDate;
+		CompanyCompanyId = companyCompanyId;
+		this.companyName = companyName;
+		this.location = location;
+	}
 	public int getJobId() {
 		return jobId;
 	}

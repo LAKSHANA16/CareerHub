@@ -1,20 +1,21 @@
 package com.controller;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 
 import com.dto.CompanyDto;
 import com.exception.InvalidIdException;
-
+import com.model.ApplicantModel;
 import com.service.CompanyService;
 
 
 public class CompanyController {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 	Scanner sc = new Scanner(System.in);
 	CompanyService companyService = new CompanyService();
 	while (true){
-		System.out.println("***********APPLICANT OPS*************");
+		System.out.println("*********** OPS*************");
 		System.out.println("ENTER 1 TO List all Job");
 		System.out.println("ENTER 0 TO EXIT");
 		int input = sc.nextInt();
@@ -27,22 +28,21 @@ public class CompanyController {
 		{
 		case 1:
 			System.out.println("SEARCH BY Id");
-			System.out.println("Enter the id");
-			int CompanyCompanyId=sc.nextInt();
 			try
 			{
-				CompanyDto c=companyService.getByID(CompanyCompanyId);
-				System.out.println(c);
+				List<CompanyDto> list=companyService.getByID();
+				for(CompanyDto c:list) {
+					System.out.println(c);
+				}
+				
 			}
 			catch(SQLException e)
 			{
 				System.out.println(e.getMessage());
 			}
-			catch(InvalidIdException e)
-			{
-				System.out.println(e.getMessage());
-			}
+		
 			break;
+		
 			default:
 				System.out.println("Invalid Id");
 				break;

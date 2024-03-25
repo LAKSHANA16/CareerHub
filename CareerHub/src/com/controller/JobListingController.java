@@ -13,7 +13,7 @@ public class JobListingController
 		Scanner sc = new Scanner(System.in);
 	     
 		while (true){
-			System.out.println("***********APPLICANT OPS*************");
+			System.out.println("*********** OPS*************");
 			System.out.println("ENTER 1 TO List all details");
 			System.out.println("ENTER 0 TO EXIT");
 			int input = sc.nextInt();
